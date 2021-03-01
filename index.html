@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous"> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <title>얼평</title>
+
+    <meta name="title" content="얼굴평가 테스트">
+    <meta name="subject" content="인공지능이 본 내 얼굴은 몇 점일까요? 지금 바로 얼굴을 평가해보세요!">
+    <meta name="keywords" content="얼평, 얼굴 테스트, 인공지능 얼굴 평가, 얼굴상, 얼굴상 테스트, 얼평하기, 얼굴 평가하기, face rating, 얼굴 평가, 존예, 존잘, 존못, 훈남, 훈녀, 흔녀, 흔남, 여신, 남신, 여신강림, 얼짱, AI 얼굴평가">
+    <meta name="author" content="룰메이커">
+    <link rel="canonical" href="https://facerating.site" />
+    <meta property="og:url" content="https://facerating.site" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="얼굴 평가 테스트" />
+    <meta property="og:description" content="존예 존잘? 아님 존못..?ㅜㅜ 내 얼굴은 과연 몇 점일까요? 인공지능이 본 내 얼굴 평가, 내 얼굴 점수를 확인해보세요! 연예인 사진 데이터로 학습한 인공지능이 나의 얼굴 점수를 평가해 드립니다. 회원가입과 사진 데이터 전송 모두 필요 없이 클릭 한 번으로 내 얼굴을 평가받을 수 있어요. 사진에 따라 점수가 달라지니 높은 점수가 나올 때까지 도전!"/>
+
+    
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+  </head>
+
+<body>
+    <nav class="p-3 container navbar navbar-expand-lg navbar-light nav-distance">
+    <a class="navbar-brand" style="color:#fff;" href="#" onclick="reloadPage()">얼평</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active">
+					<a class="nav-link" href="#" onclick="reloadPage()">홈
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">블로그</a>
+				</li>
+		
+			</ul>
+		</div>
+  </nav>
+
+    <section class="container d-flex flex-column justify-content-center align-items-center">
+		<h1>얼평해주는 인공지능</h1>
+<h2>인공지능으로 본 내 얼굴 점수는?</h2>
+    <section class="pb-2 d-flex justify-content-center gender-container">
+      <p class="d-flex align-items-center pr-3" style="color:#fff;" >여자</p>
+      <div>
+        <label class="switch">
+          <input type="checkbox" id="gender">
+          <span class="slider round"></span>
+        </label>
+
+      </div>
+
+      <p class="d-flex align-items-center pr-3" style="color:#fff;" >남자</p>
+
+    </section>
+
+    
+
+
+
+
+<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<div class="col-8 container file-upload">
+
+
+  <div class="image-upload-wrap">
+    <input class="file-upload-input" type='file' onchange="readURL(this)" accept="image/*" />
+    <div class="drag-text">
+      <h3>당신의 얼굴 점수가 궁금하다면 사진을 올려보세요!</h3>
+      <h6>(사진은 어디에도 저장되지 않으니 걱정 NONO!)</h6>
+    </div>
+  </div>
+  <div class="file-upload-content">
+    <img class="file-upload-image" id="face-image" src="#" alt="your image" />
+    <div id="loading">
+      <div class="loader"></div>
+      <div class="text-center">두구두구 과연 내 점수는?</div>
+    </div>
+    
+    
+
+    <div class="wrapper">
+      <div class="star-rating">
+        <div class="star-top" style="width:0%">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <div class="star-bottom">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="result-score"></div>
+    <div class="result-name"></div>
+    <div class="result-message"></div>
+
+  
+    <div class="label-container" class="d-flex flex-column justify-content-around"></div>
+
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis addthis_inline_share_toolbox_xi63"></div>
+            
+            
+    <div class="image-title-wrap">
+      
+    </div>
+    <div class="try-again"><button type="button" onclick="reloadPage()" class="remove-image">다른 사진으로 재도전!</button></div>
+  </div>
+  
+
+  
+  <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">인생샷 올려볼까?</button>
+</div>
+
+<footer class="footer">
+
+  <div>
+      <p style="color:grey ;">&copy; rulemaker 2021. All Rights Reserved. </p>
+
+  </div>
+  <div class="contact-info">
+    <a href="mailto:rulemaker.j@gmail.com" class="contact_info">개발자 문의</a>
+    <a href="mailto:rulemaker.j@gmail.com" class="contact_info">광고 문의</a>
+    <a href="https://www.youtube.com/channel/UCQNE2JmbasNYbjGAcuBiRRg" class="contact_info">제작 도움: 조코딩 유튜브 채널</a>
+    
+  </div>
+  <!-- <div class="privacy-policy">
+    <a href="privacy.html">개인정보 보호 방침</a>
+
+  </div> -->
+</footer>
+<script>
+  var check = $("input[type='checkbox']");
+check.click(function(){
+	$("p").toggle();
+});
+</script>
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('.image-upload-wrap').hide();
+        $('#loading').show();
+        $('.file-upload-btn').hide();
+        $('.star-rating').hide();
+        $('.file-upload-image').attr('src', e.target.result);
+        $('.file-upload-content').show();
+
+
+
+        
+
+        // $('.image-title').html(input.files[0].name);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+      init().then(function() {
+          $('#loading').hide();
+          
+          predict();
+          $('.star-rating').show();
+ 
+          $('.try-again').show();
+          
+          
+          
+        });
+    } else {
+      reloadPage();
+      
+    }
+}
+
+// function removeUpload() {
+//   $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+//   $('.file-upload-content').hide();
+  
+// }
+// $('.image-upload-wrap').bind('dragover', function () {
+// 		$('.image-upload-wrap').addClass('image-dropping');
+// 	});
+// 	$('.image-upload-wrap').bind('dragleave', function () {
+// 		$('.image-upload-wrap').removeClass('image-dropping');
+// });
+
+function reloadPage(){
+  window.location.reload();
+
+
+}
+
+</script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ede65e72f246201"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+  // More API functions here:
+  // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+  // the link to your model provided by Teachable Machine export panel
+  var URL;
+  const femaleURL = "https://teachablemachine.withgoogle.com/models/Jex7vDC7h/";
+  const maleURL = "https://teachablemachine.withgoogle.com/models/-t1-Ivn07/";
+  let model, webcam, labelContainer, maxPredictions;
+  // Load the image model and setup the webcam
+  async function init() {
+      if (document.getElementById("gender").checked) {
+          URL = maleURL;
+      } else {
+          URL = femaleURL;
+      }
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
+      model = await tmImage.load(modelURL, metadataURL);
+      maxPredictions = model.getTotalClasses();
+      labelContainer = document.getElementById("label-container");
+      for (let i = 0; i < maxPredictions; i++) {
+          var element = document.createElement("div")
+
+      }
+  }
+  // run the webcam image through the image model
+  async function predict() {
+    // predict can take in an image, video or canvas html element
+    var image = document.getElementById("face-image");
+    const prediction = await model.predict(image, false);
+    console.log(prediction);
+    prediction.sort(function(a, b) {
+      return parseFloat(b.probability) - parseFloat(a.probability);
+    });
+    var resultMessage, resultPer, resultScore;
+
+    if (document.getElementById("gender").checked) {
+
+        switch(prediction[0].className){
+          case "m5":
+            resultName = "🥳남신 미모🥳"
+            resultMessage ="당신은 상위 1%의 얼굴! 남신과 같은 얼굴이시네요. 혹시 배우 아니신가요? 호불호 없이 누가 봐도 잘생겼다고 할 흔치 않은 미모를 가지셨나봐요. 매일 거울만 봐도 행복하시겠어요."
+            resultPer = "96%"
+            resultScore = "5/5"
+  
+            break;
+          case "m4.5":
+            resultName = "🤩존잘 보스🤩"
+            resultMessage = "정말 잘생긴 얼굴을 가지셨네요. 혹시 연예인 아니신가요? 사실상 남신이나 다름없는 미모의 당신, 인생샷이 아니라서 아주 아깝게 5점이 아닌 4.5점을 받으신 것 같아요. 더 잘 나온 사진으로 재도전하면 5점도 충분히 가능할 얼굴이시네요!"
+            resultPer = "80%"
+            resultScore = "4.5/5"
+
+            break;
+          case "m4":
+          resultName ="🥰잘생긴 얼굴"
+            resultMessage = "잘생긴 얼굴을 가지셨네요. 혹시 연예인 아니신가요? 정말 잘생긴 얼굴의 소유자이시지만, 인생샷이 아니라서 아주 아깝게 5점이 아닌 4점을 받으신 것 같아요. 더 잘 나온 사진으로 재도전하면 5점도 충분히 가능하지 않을까요?"
+            resultPer = "72%"
+            resultScore = "4/5"
+ 
+            break;
+          case "m3.5":
+          resultName ="🤗훈훈한 얼굴🤗"
+            resultMessage = "훈훈하고 호감가는 얼굴을 가지셨네요. 사진보다 실물이 훨씬 더 낫다는 말을 평소에 많이 들을 것 같은 얼굴이시네요. 사진에 따라 점수가 달라질 수 있으니 좀 더 잘 나온 사진으로 다시 도전해볼까요?"
+            resultPer = "68%"
+            resultScore = "3.5/5"
+            break;
+          case "m3":
+          resultName ="😊웃는 게 멋진 사람😊"
+            resultMessage = "편안하고 호감가는 얼굴의 당신! 사진보다 실물이 훨씬 더 낫다는 말을 평소에 많이 들을 것 같은 얼굴이시네요. 어떤 사진이냐에 따라 점수가 달라질 수 있으니 좀 더 잘 나온 사진으로 다시 도전해볼까요?"
+            resultPer = "60%"
+            resultScore = "3/5"
+            break;
+          case "m2.5":
+          resultName ="🧐흔흔한 얼굴?🧐"
+            resultMessage = "흔한듯 흔하지 않은듯 사진을 어떻게 찍느냐에 따라 달라지는 얼굴이시네요! 자칫 평범한듯 보이지만 어떻게 꾸미느냐에 따라 얼마든지 달라질 수 있는 도화지 같은 얼굴을 가지셨네요. 인생샷으로 다시 도전해서 점수를 올려볼까요?"
+            resultPer = "48%"
+            resultScore = "2.5/5"
+            break;
+          case "m2":
+          resultName ="😳인생샷으로 재도전?😳"
+            resultMessage = "혹시 후면카메라로 얼짱 각도나 보정 없이 찍은 사진을 올리진 않으셨나요? 실물이 아닌 사진이기 때문에 어떤 사진이냐에 따라 점수가 크게 달라질 수 있어요! 이번엔 신경써서 찍은 인생샷으로 다시 도전해볼까요? "
+            resultPer = "40%"
+            resultScore = "2/5"
+            break;
+          case "m1.5":
+          resultName ="😓😥죄송해요😥😓"
+            resultMessage = "죄송해요. 제가 잘못했어요ㅠㅠ 아무래도 아직 인공지능이 갈 길이 먼 가봐요.. 그래도 힘내요ㅜㅜ! 외모가 전부는 아니니까요! 마음은 예쁠거에요.. 혹시 결과가 달라질지도 모르니 다른 사진으로 다시 도전해볼까요?"
+            resultPer = "30%"
+            resultScore = "1.5/5"
+            break;
+          case "m1":
+          resultName ="🤐😰잘못했어요😰🤐"
+            resultMessage = "죄송해요. 제가 잘못했어요ㅠㅠ 아무래도 아직 인공지능이 갈 길이 먼 가봐요.. 그래도 힘내요ㅜㅜ! 외모가 전부는 아니니까요! 마음은 예쁠거에요.. 혹시 결과가 달라질지도 모르니 다른 사진으로 다시 도전해볼까요?"
+            resultPer = "20%"
+            resultScore = "1/5"
+            break;
+          default:
+            resultName ="🤯평가 불가🤯"
+            resultMessage = "잘..모르겠네요..얼굴만 제대로 나온 사진으로 다시 도전해보시겠어요?"
+
+
+        }
+      } else {
+
+          switch(prediction[0].className){
+            case "w5":
+            resultName ="🥳여신 미모🥳"
+              resultMessage ="당신은 상위 1%의 얼굴! 여신 미모와 같은 얼굴이시네요. 혹시 배우 아니신가요? 호불호 없이 누가 봐도 예쁘다고 할 흔치 않은 미모를 가지셨나봐요. 매일 거울만 봐도 행복하시겠어요."
+              resultPer = "96%"
+              resultScore = "5/5"
+
+              break;
+            case "w4.5":
+            resultName ="🤩존예 보스🤩"
+              resultMessage ="정말 예쁜 얼굴을 가지셨네요. 혹시 연예인 아니신가요? 사실상 여신 미모나 다름없는 당신, 인생샷이 아니라서 아주 아깝게 5점이 아닌 4.5점을 받으신 것 같아요. 아마 더 잘 나온 사진으로 재도전하면 5점으로 바뀔 것 같은데요? "
+              resultPer = "80%"
+
+              resultScore = "4.5/5"
+
+              break;
+            case "w4":
+            resultName ="🥰예쁜 얼굴🥰"
+              resultMessage = "예쁜 얼굴을 가지셨네요. 혹시 연예인 아니신가요? 정말 예쁜 얼굴의 소유자이시지만, 인생샷이 아니라서 아주 아깝게 5점이 아닌 4점을 받으신 것 같아요. 더 잘 나온 사진으로 재도전하면 5점도 충분히 가능하지 않을까요?"
+              resultPer = "72%"
+              resultScore = "4/5"
+ 
+              break;
+            case "w3.5":
+            resultName ="🤗훈훈한 얼굴🤗"
+              resultMessage = "훈훈하고 호감가는 얼굴을 가지셨네요. 사진보다 실물이 훨씬 더 낫다는 말을 평소에 많이 들을 것 같은 얼굴이시네요. 어떤 사진이냐에 따라 점수가 달라질 수 있으니 좀 더 잘 나온 사진으로 다시 도전해볼까요?"
+              resultPer = "68%"
+              resultScore = "3.5/5"
+              break;
+            case "w3":
+            resultName ="😊웃는 게 예쁜 사람😊"
+              resultMessage = "편안하고 호감가는 얼굴의 당신! 사진보다 실물이 훨씬 더 낫다는 말을 평소에 많이 들을 것 같은 얼굴이시네요. 어떤 사진이냐에 따라 점수가 달라질 수 있으니 좀 더 잘 나온 사진으로 다시 도전해볼까요?"
+              resultPer = "60%"
+              resultScore = "3/5"
+              break;
+            case "w2.5":
+            resultName ="🧐흔흔한 얼굴..?🧐"
+              resultMessage = "흔한듯 흔하지 않은듯 사진을 어떻게 찍느냐에 따라 달라지는 얼굴이시네요! 자칫 평범한듯 보이지만 어떻게 꾸미느냐에 따라 얼마든지 달라질 수 있는 도화지 같은 얼굴을 가지셨네요! 인생샷으로 다시 도전해서 점수를 올려볼까요?"
+              resultPer = "48%"
+              resultScore = "2.5/5"
+              break;
+            case "w2":
+            resultName ="😳인생샷으로 재도전?😳"
+              resultMessage = "혹시 후면카메라로 얼짱 각도나 보정 없이 찍은 사진을 올리진 않으셨나요? 실물이 아닌 사진이기 때문에 어떤 사진이냐에 따라 점수가 크게 달라질 수 있어요! 이번엔 신경써서 찍은 인생샷으로 다시 도전해볼까요? "
+              resultPer = "40%"
+              resultScore = "2/5"
+              break;
+            case "w1.5":
+            resultName ="😓😥죄송해요😥😓"
+              resultMessage = "죄송해요. 제가 잘못했어요ㅠㅠ 아무래도 아직 인공지능이 갈 길이 먼 가봐요.. 그래도 힘내요ㅜㅜ! 외모가 전부는 아니니까요! 마음은 예쁠거에요.. 혹시 결과가 달라질지도 모르니 다른 사진으로 다시 도전해볼까요?"
+              resultPer = "30%"
+              resultScore = "1.5/5"
+              break;
+            case "w1":
+            resultName ="🤐😰잘못했어요😰🤐"
+              resultMessage = "죄송해요. 제가 잘못했어요ㅠㅠ 아무래도 아직 인공지능이 갈 길이 먼 가봐요.. 그래도 힘내요ㅜㅜ! 외모가 전부는 아니니까요! 마음은 예쁠거에요.. 혹시 결과가 달라질지도 모르니 다른 사진으로 다시 도전해볼까요?"
+              resultPer = "20%"
+              resultScore = "1/5"
+              break;
+            default:
+            resultName ="🤯평가 불가🤯"
+              resultMessage = "잘..모르겠네요..얼굴만 제대로 나온 사진으로 다시 도전해보시겠어요?"
+              
+
+        }
+      }
+
+$('.result-name').html(resultName);
+    $('.result-message').html(resultMessage);
+    $('.result-score').html(resultScore);
+    $(document).ready(function() {
+  // Gets the span width of the filled-ratings span
+  // this will be the same for each rating
+  
+  // Sets the container of the ratings to span width
+  // thus the percentages in mobile will never be wrong
+
+  $('.star-top').width(resultPer);
+
+});
+
+
+  }
+
+</script>
+</body>
+<!-- Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
+<!-- Copyright (c) 2020 by Jay Jamero (https://codepen.io/denwo/pen/azjXzL)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
+
+<!-- Copyright (c) 2020 by Emily Huang (https://codepen.io/huange/pen/PqvOBr)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ -->
+
+
+</html>
