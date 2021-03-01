@@ -1,6 +1,6 @@
 ---
+title: ETC by Donald McIntyre 이더리움클래식(ETC) 개발자 "ETC, 10년 내 7천 달러 돌파"
 layout: post
-title: ETC by Donald McIntyre
 ---
 
 이더리움클래식(ETC) 개발자 "ETC, 10년 내 7천 달러 돌파"
