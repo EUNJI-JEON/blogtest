@@ -1,4 +1,5 @@
 ---
+layout: post
 title: ETC by Donald McIntyre
 ---
 

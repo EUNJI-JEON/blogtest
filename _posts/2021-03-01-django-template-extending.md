@@ -1,4 +1,5 @@
 ---
+layout: post
 title: django template extending
 ---
 

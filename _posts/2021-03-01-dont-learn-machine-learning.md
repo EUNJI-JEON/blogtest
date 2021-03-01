@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Don’t learn machine learning
 ---
 

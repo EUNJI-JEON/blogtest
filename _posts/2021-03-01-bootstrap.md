@@ -1,4 +1,5 @@
 ---
+layout: post
 title: "[bootstrap]부트스트랩  활용해 쉽게 디자인하기"
 ---
 
