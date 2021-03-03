@@ -1,6 +1,6 @@
 ---
 title: ACEPTAMOS EOS  하이퍼인플레이션과 이오스(EOS)
-layout: post
+
 ---
 
 '이오스 받아요(ACEPTAMOS EOS)'
