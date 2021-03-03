@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: "[python & django] 가상환경 설정하고 장고 설치하기"
 ---
 

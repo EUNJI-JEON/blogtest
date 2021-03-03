@@ -1,5 +1,5 @@
 ---
-layout: post
+
 title: "[Teachable Machine] 코딩없이 머신러닝 모델 만들기"
 ---
 
